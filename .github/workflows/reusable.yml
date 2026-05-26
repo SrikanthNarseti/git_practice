@@ -1,0 +1,14 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+
+jobs:
+
+  demo:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - run: echo "Hello from reusable workflow"
