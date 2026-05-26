@@ -1,18 +1,31 @@
-name: Schedule Test
+name: Output Demo
 
 on:
-
   workflow_dispatch:
-
-  schedule:
-    - cron: '*/5 * * * *'
 
 jobs:
 
-  test:
+  build:
+
+    runs-on: ubuntu-latest
+
+    outputs:
+      version: ${{ steps.ver.outputs.VERSION }}
+
+    steps:
+
+      - id: ver
+
+        run: |
+
+          echo "VERSION=v1.100" >> $GITHUB_OUTPUT
+
+  deploy:
+
+    needs: build
 
     runs-on: ubuntu-latest
 
     steps:
 
-      - run: date
+      - run: echo "${{ needs.build.outputs.version }}"
