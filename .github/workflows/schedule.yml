@@ -2,8 +2,9 @@ name: Schedule Test
 
 on:
 
-  schedule:
+  workflow_dispatch:
 
+  schedule:
     - cron: '*/5 * * * *'
 
 jobs:
